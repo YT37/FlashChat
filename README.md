@@ -6,5 +6,5 @@
 - Add firebaseConfig in web/index.html for Firebase.
 
 # Demo
-- FlashChat.apk is in the Repository along with the Code
+- FlashChat.apk is in the repo.
 - Website Link :- [Click Here](https://flashchat-b4bf5.web.app/#/)
