@@ -1,10 +1,4 @@
-# FlashChat-Flutter
-- This project is a Peer-To-Peer Chatting app in Flutter.
+# FlashChat
 
-# Instructions
-- Add google-services.json in android/app/ for Firebase.
-- Add firebaseConfig in web/index.html for Firebase.
-
-# Demo
-- FlashChat.apk is in the repo.
-- Website Link :- [Click Here](https://flashchat-b4bf5.web.app/#/)
+# Description
+- An Online Chatroom

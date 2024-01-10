@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+
+  <title>FlashChat</title>
+  <meta name="description" content="An Online Chatroom">
+
+  <meta charset="UTF-8">
+  <link rel="manifest" href="manifest.json">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+
+  <meta name="theme-color" content="#ffffff">
+
+  <link rel="icon" type="image/ico" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#f6b518">
+  <meta name="msapplication-TileColor" content="#ffffff">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="FlashChat">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+
+  <script>
+    const serviceWorkerVersion = null;
+  </script>
+  <script src="flutter.js" defer></script>
+
+  <style>
+    .loading {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .loader {
+      position: relative;
+    }
+
+    .spinner {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border-top: 8px solid #0d1520;
+      border-right: 8px solid white;
+      border-bottom: 8px solid #0d1520;
+      border-left: 8px solid white;
+      animation: spin 2s linear infinite;
+      -webkit-animation: spin 2s linear infinite;
+    }
+
+    .center {
+      top: 50%;
+      left: 50%;
+      height: 75px;
+      width: 75px;
+      position: absolute;
+      transform: translate(-50%, -50%);
+    }
+
+    .name {
+      margin-top: 25px;
+    }
+
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="loading">
+    <div class="loader">
+      <div class="spinner"></div>
+      <img src="icons/android-chrome-512x512.png" class="center" />
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener("load", function (ev) {
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function (engineInitializer) {
+          engineInitializer.initializeEngine().then(function (appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

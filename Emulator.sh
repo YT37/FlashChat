@@ -1,0 +1,1 @@
+cd Source\ Code/website && firebase emulators:start --import=./emulators/ --export-on-exit && cd ..
