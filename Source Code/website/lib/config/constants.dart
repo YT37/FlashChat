@@ -11,5 +11,5 @@ const TESTING = kDebugMode;
 const IP = "localhost";
 
 final FirebaseAuth auth = FirebaseAuth.instance;
-final FirebaseFirestore database = FirebaseFirestore.instance;
+final FirebaseFirestore firestore = FirebaseFirestore.instance;
 final FirebaseAnalytics analytics = FirebaseAnalytics.instance;

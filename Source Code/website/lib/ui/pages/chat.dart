@@ -137,7 +137,7 @@ class _ChatPageState extends State<ChatPage> with RestorationMixin {
   void submit(BuildContext context) {
     FocusScope.of(context).unfocus();
 
-    database.collection("messages").add(
+    firestore.collection("messages").add(
       {
         "text": _messageController.value.text.trim(),
         "sender": user.username.split("@")[0],
@@ -155,7 +155,7 @@ class _Messages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: database
+      stream: firestore
           .collection("messages")
           .orderBy("time", descending: true)
           .snapshots(),

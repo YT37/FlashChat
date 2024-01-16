@@ -1,33 +1,35 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 import './firebase_options.dart';
+import '/config/constants.dart';
 import '/config/theme.dart';
 import '/ui/pages/export.dart';
-import 'config/constants.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   if (TESTING) {
-    await FirebaseAuth.instance.useAuthEmulator(IP, 9090);
+    try {
+      await auth.useAuthEmulator(IP, 9090);
 
-    FirebaseFirestore.instance.settings = const Settings(
-      host: "$IP:9080",
-      sslEnabled: false,
-      persistenceEnabled: false,
-    );
+      firestore.settings = const Settings(
+        host: "$IP:9080",
+        sslEnabled: false,
+        persistenceEnabled: false,
+      );
+    } catch (_) {}
   }
 
+  await analytics.setAnalyticsCollectionEnabled(!TESTING);
+
   setPathUrlStrategy();
+
   runApp(const FlashChat());
 }
 
