@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,23 +12,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
-  if (TESTING) {
-    try {
-      await auth.useAuthEmulator(IP, 9090);
-
-      firestore.settings = const Settings(
-        host: "$IP:9080",
-        sslEnabled: false,
-        persistenceEnabled: false,
-      );
-    } catch (_) {}
-  }
-
   await analytics.setAnalyticsCollectionEnabled(!TESTING);
 
   setPathUrlStrategy();
-
   runApp(const FlashChat());
 }
 
