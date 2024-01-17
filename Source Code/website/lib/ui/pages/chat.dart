@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '/config/constants.dart';
 import '/services/auth.dart';
+import '/tools/extensions.dart';
 import '/ui/widgets/input_field.dart';
 
 class ChatPage extends StatefulWidget {
@@ -260,7 +261,7 @@ class _Message extends StatelessWidget {
             ),
           ),
           Text(
-            "${time.toDate().hour > 12 ? time.toDate().hour - 12 : time.toDate().hour}:${time.toDate().minute} ${time.toDate().hour > 12 ? "PM" : "AM"}",
+            time.toDate().to12Hour,
             style: context.textTheme.bodySmall!
                 .copyWith(color: Colors.grey.shade800),
           ),

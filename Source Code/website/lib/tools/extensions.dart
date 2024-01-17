@@ -10,6 +10,11 @@ extension ToolsString on String {
   int toInt() => int.parse(this);
 }
 
+extension ToolsDateTime on DateTime {
+  String get to12Hour =>
+      "${hour > 12 ? hour - 12 : hour}:$minute ${hour > 12 ? "PM" : "AM"}";
+}
+
 extension ToolsColor on Color {
   String code() => toString().toLowerCase().split("f")[2].split(")")[0];
 }
