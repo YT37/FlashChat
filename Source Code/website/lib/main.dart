@@ -12,7 +12,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await analytics.setAnalyticsCollectionEnabled(!TESTING);
+  await ANALYTICS.setAnalyticsCollectionEnabled(!TESTING);
 
   setPathUrlStrategy();
   runApp(const FlashChat());
@@ -20,7 +20,6 @@ void main() async {
 
 class FlashChat extends StatelessWidget {
   const FlashChat({super.key});
-
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
