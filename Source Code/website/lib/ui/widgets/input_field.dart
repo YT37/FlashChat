@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class InputField extends StatelessWidget {
-  final RestorableTextEditingController controller;
+  final TextEditingController controller;
   final TextInputType textInputType;
   final InputDecoration decoration;
   final bool autofocus;
@@ -63,7 +63,7 @@ class InputField extends StatelessWidget {
                     keyboardType: textInputType,
                     decoration: decoration,
                     autofocus: autofocus,
-                    controller: controller.value,
+                    controller: controller,
                     obscureText: hideText ? hide.value : !hide.value,
                     focusNode: focusNode,
                     onSubmitted: onSubmitted,

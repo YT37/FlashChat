@@ -10,7 +10,7 @@ import '/models/user.dart';
 late User user;
 
 const TESTING = kDebugMode;
-const IP = "localhost";
+const IP = "127.0.0.1";
 
 final FirebaseAuth AUTH = FirebaseAuth.instance;
 final FirebaseFirestore FIRESTORE = FirebaseFirestore.instance;

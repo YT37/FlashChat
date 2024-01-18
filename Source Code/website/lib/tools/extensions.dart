@@ -18,8 +18,3 @@ extension ToolsDateTime on DateTime {
 extension ToolsColor on Color {
   String code() => toString().toLowerCase().split("f")[2].split(")")[0];
 }
-
-extension ToolsRestorableTextEditingController
-    on RestorableTextEditingController {
-  String text() => value.text.trim();
-}

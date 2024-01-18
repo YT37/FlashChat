@@ -13,13 +13,9 @@ class ChatPage extends StatefulWidget {
   _ChatPageState createState() => _ChatPageState();
 }
 
-class _ChatPageState extends State<ChatPage> with RestorationMixin {
-  @override
-  String get restorationId => "chat_page";
-
+class _ChatPageState extends State<ChatPage> {
   late final RxList<Map<String, Object>> fields;
-  final RestorableTextEditingController _messageController =
-      RestorableTextEditingController();
+  final TextEditingController _messageController = TextEditingController();
 
   @override
   void initState() {
@@ -38,22 +34,10 @@ class _ChatPageState extends State<ChatPage> with RestorationMixin {
   }
 
   @override
-  void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
-    fields.forEach((field) {
-      if (field["controller"] != null) {
-        registerForRestoration(
-          field["controller"]! as RestorableTextEditingController,
-          "${field["value"]}_controller",
-        );
-      }
-    });
-  }
-
-  @override
   void dispose() {
     fields.forEach((field) {
       if (field["controller"] != null) {
-        (field["controller"]! as RestorableTextEditingController).dispose();
+        (field["controller"]! as TextEditingController).dispose();
       }
     });
     super.dispose();
@@ -135,13 +119,13 @@ class _ChatPageState extends State<ChatPage> with RestorationMixin {
 
     FIRESTORE.collection("messages").add(
       {
-        "text": _messageController.value.text.trim(),
+        "text": _messageController.text.trim(),
         "sender": user.username.split("@")[0],
         "time": Timestamp.now(),
       },
     );
 
-    _messageController.value.clear();
+    _messageController.clear();
   }
 }
 

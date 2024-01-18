@@ -16,16 +16,11 @@ class SignUpPage extends StatefulWidget {
   _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> with RestorationMixin {
-  @override
-  String get restorationId => "sign_up_page";
-
+class _SignUpPageState extends State<SignUpPage> {
   late final RxList<Map<String, Object>> fields;
 
-  final RestorableTextEditingController _usernameController =
-      RestorableTextEditingController();
-  final RestorableTextEditingController _passController =
-      RestorableTextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passController = TextEditingController();
 
   @override
   void initState() {
@@ -53,22 +48,10 @@ class _SignUpPageState extends State<SignUpPage> with RestorationMixin {
   }
 
   @override
-  void restoreState(RestorationBucket? oldBucket, bool initialRestore) {
-    fields.forEach((field) {
-      if (field["controller"] != null) {
-        registerForRestoration(
-          field["controller"]! as RestorableTextEditingController,
-          "${field["value"]}_controller",
-        );
-      }
-    });
-  }
-
-  @override
   void dispose() {
     fields.forEach((field) {
       if (field["controller"] != null) {
-        (field["controller"]! as RestorableTextEditingController).dispose();
+        (field["controller"]! as TextEditingController).dispose();
       }
     });
     super.dispose();
@@ -137,8 +120,8 @@ class _SignUpPageState extends State<SignUpPage> with RestorationMixin {
   Future<void> submit(BuildContext context) async {
     FocusScope.of(context).unfocus();
 
-    final String username = _usernameController.value.text.toLowerCase();
-    final String password = _passController.value.text;
+    final String username = _usernameController.text.toLowerCase();
+    final String password = _passController.text;
 
     bool errors = false;
     fields.forEach((field) => field["error"] = "");
@@ -187,7 +170,7 @@ class _SignUpPageState extends State<SignUpPage> with RestorationMixin {
       }
     } else if (username.isEmpty || password.isEmpty) {
       fields.forEach((field) {
-        if ((field["controller"]! as RestorableTextEditingController)
+        if ((field["controller"]! as TextEditingController)
             .value
             .text
             .isEmpty) {
