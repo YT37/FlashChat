@@ -17,7 +17,7 @@ jobs:
           flutter config --enable-web
           cd "Source Code/website"
           flutter pub get
-          flutter build web
+          flutter build web --release
 
       - name: Deploy
         uses: FirebaseExtended/action-hosting-deploy@v0

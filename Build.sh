@@ -1,1 +1,1 @@
-cd Source\ Code/website/ && flutter build web && firebase deploy --only hosting && cd ../..
+cd Source\ Code/website/ && flutter build web --release && firebase deploy --only hosting && cd ../..
